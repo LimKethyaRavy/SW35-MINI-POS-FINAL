@@ -9,17 +9,33 @@
 :root {
   --sidebar-bg: #004d40;
   --sidebar-active: #00bfa5;
-  --brand-blue: #004d40;
+  --brand-theme: #004d40;
   --text: #f5f7f7;
   --topbar: #0b473d;
   --filter-text: #052258;
   --noraml-txt: #ffffff;
 }
 
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
 body {
   background-color: #f3f4f6;
   font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
+
+/* ==================Main================== */
+.main {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
 
 /* ===== Sidebar ===== */
 .sidebar {
@@ -128,23 +144,47 @@ body {
   font-size: 0.75rem;
 }
 
-/* ===== Main content ===== */
-.main-content {
-  margin-left: 260px;
-  min-height: 100vh;
-  width: 70%;
+/* ================Logo============ */
+
+.logo-box {
+  width: 100px;
+  height: 100px;
 }
+
+.logo-box img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+} 
+
 
 /* =================Top Bar================ */
 .topbar {
-  background: var(--topbar);
-  border-bottom: 1px solid #e5e7eb;
-  padding: 0.9rem 1.5rem;
+  background: var(--text);
+  box-shadow: rgba(0, 0, 0, 0.10) 0px 3px 8px;
+  height: 80px;
+  padding-left: 30px;
+  padding-right: 30px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 260px;
+  right: 0;
+  z-index: 1000;
 }
 
+.content-shell {
+  flex: 1;
+  overflow-y: auto;
+  margin-left: 260px;
+  margin-top: 80px;
+}
+
+.content-shell .row {
+  min-height: calc(100vh - 80px);
+}
 .topbar h5 {
   margin: 0;
   font-weight: 600;
@@ -173,14 +213,43 @@ body {
   color: #fff;
 }
 
+.sale_transition {
+  color: var(--sidebar-active);
+}
+
+.operation_date {
+  width: 400px;
+  height: 50px;
+  background-color: rgb(231, 231, 231);
+  border-radius: 2cqmin;
+}
+
+.icon-date {
+  color: var(--sidebar-active);
+}
+
+#date_op {
+  color: var(--sidebar-active);
+}
+
+/* =======================Main-Content================= */
+.main-content {
+  width: 100%;
+  min-height: calc(100vh - 80px);
+  overflow: visible;
+}
 .content {
   height: 100px;
 }
 
 .search-product {
   width: 300px;
+  height: 50px;
 }
 
+.search-product:focus {
+  border: var()
+}
 .search-product .fa-magnifying-glass {
   color: gray;
 }
@@ -198,10 +267,12 @@ body {
   height: 100px;
 }
 
-.filter-ul {
-  gap: 50px;
-}
+.filter-ul{
 
+    gap:15px;
+    flex-wrap:wrap;
+
+}
 .filter-product {
   text-decoration: none;
   color: var(--filter-text);
@@ -221,13 +292,14 @@ body {
   background-color: blue;
 }
 
+
 /* ===========OrderSumary========================= */
 .content-wrapper {
   min-height: 100vh;
 }
 
 .order-summary{
-  width: 30%;
+  width: 100%;
 }
 
 .main-content {
@@ -240,7 +312,7 @@ body {
   padding: 24px;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: auto;
   position: sticky;
   top: 0;
 }
@@ -252,17 +324,30 @@ body {
   color: var(--sidebar-active)
 }
 
-.filter-pay button {
-  width: 80px;
-  padding: 10px;
-  border: 1px solid gray;
-  border-radius: 10px;
-  
+.filter-pay{
+
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+
+}
+
+.filter-pay button{
+
+    flex:1;
+    min-width:80px;
+    border: 1px solid gray;
+
+}
+.filter-pay button:hover {
+
+  background-color:  var(--sidebar-active);
+  color: #fff;
 
 }
 
 .full_pay_btn {
-  width: 350px;
+  width: 380px;
   height: 50px;
   background-color:#eafaf1;
   border: 1px solid #00bfa5;
@@ -272,17 +357,136 @@ body {
   color: var(--sidebar-bg)
 }
 
+.product-magement {
+  color: var(--sidebar-active);
+} 
 
-@media (max-width: 991px) {
-  .sidebar {
-    transform: translateX(-100%);
-    transition: transform 0.2s ease;
-    z-index: 1050;
+
+.title {
+  width: 100px;
+  height: 200px;
+  background-color: yellow;
+}
+
+/* ===================Input Control=========== */
+
+#pay_exact_amount {
+  transition: all 0.3s ease-in-out;
+  
+}
+
+#pay_exact_amount:hover {
+  background-color: var(--sidebar-active);
+  color:#fff;
+
+}
+
+#search_product:focus {
+  
+  border-color: #00bfa5;
+  box-shadow: 0 0 0 0.25rem rgba(0, 191, 165, 0.25);
+}
+#cash-recive:focus {
+
+  border-color: #00bfa5;
+   box-shadow: 0 0 0 0.25rem rgba(0, 191, 165, 0.25);
+}
+
+#cash_return:focus {
+
+  border-color: #00bfa5;
+   box-shadow: 0 0 0 0.25rem rgba(0, 191, 165, 0.25);
+
+}
+
+/* ======================ResponSive Control============== */
+@media (max-width:991px){
+
+    .sidebar{
+        transform: translateX(-100%);
+        transition: .3s;
+        z-index:2000;
+    }
+
+    .sidebar.show{
+        transform: translateX(0);
+    }
+
+    .topbar{
+        left:0;
+    }
+
+    .content-shell{
+        margin-left:0;
+    }
+
+}
+
+
+@media (max-width:768px){
+
+.topbar{
+
+    padding:15px;
+    height:70px;
+
+}
+
+.topbar h5{
+    font-size:18px;
+}
+
+}
+
+@media(max-width:991px){
+
+.order-summary{
+
+    position:relative;
+    top:auto;
+    border-left:none;
+    border-top:1px solid #ddd;
+}
+
+
+}
+
+@media(max-width:576px){
+
+.filter-ul{
+
+    justify-content:center;
+
+}
+
+}
+
+@media(max-width:576px){
+
+.main-content{
+
+    padding:10px;
+
+}
+
+}
+
+@media(min-width:992px){
+
+.logo-box{
+
+    width:90px;
+    height:90px;
+
+}
+
+}
+
+@media (min-width: 1440px){
+
+  .full_pay_btn {
+    width: min(100%, 550px);
+    
   }
-  .sidebar.show {
-    transform: translateX(0);
-  }
-  .main-content {
-    margin-left: 0;
-  }
+
 }

@@ -1,0 +1,217 @@
+<!Doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+
+    <link rel="stylesheet" href="../asset/css/add.css" />
+
+    <title>Product Managemnt</title>
+  </head>
+  <body>
+    <div class="container-fluid p-0">
+      <div class="row g-0">
+        <div class="col-lg-2 col-md-3">
+          <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+              <div class="logo-box">
+                <img src="../image/logo.png" alt="" />
+              </div>
+              <div>
+                <div class="brand-title">FreshMart</div>
+                <div class="brand-subtitle">Sale System</div>
+              </div>
+            </div>
+
+            <nav class="sidebar-nav">
+              <a href="#" class="nav-link"
+                ><i class="fa-solid fa-house"></i> Dashboard</a
+              >
+              <a href="../index.html" class="nav-link"
+                ><i class="fa-solid fa-cart-shopping"></i> Sale</a
+              >
+              <a href="../components/addprodluct.html" class="nav-link active"
+                ><i class="fa-solid fa-bag-shopping"></i> Product Manegement</a
+              >
+              <a href="#" class="nav-link"
+                ><i class="fa-solid fa-users"></i>Customer</a
+              >
+              <a href="#" class="nav-link"
+                ><i class="fa-solid fa-chart-bar"></i> Report</a
+              >
+              <a href="#" class="nav-link"
+                ><i class="fa-solid fa-gear"></i> Settings</a
+              >
+            </nav>
+
+            <div class="sidebar-footer d-flex align-items-center gap-2">
+              <div class="avatar-circle"><i class="fa-solid fa-user"></i></div>
+              <div>
+                <div class="footer-name">Admin Account</div>
+                <div class="footer-email">freshmart@admin.com</div>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <main class="col-lg-10 col-md-9 col-12">
+          <div class="row g-3">
+            <div class="col-12">
+              <div class="header-rightbar">
+                <h3 class="header-title">Product Manegment</h3>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="content my-4 px-3 px-lg-4 d-flex flex-column flex-md-row justify-content-between align-items-start gap-3">
+                <div class="content-title">
+                  <h4 class="c-txt">Add New Product</h4>
+                  <p class="inform-txt">
+                    Create new product to inventory system, Fill all information
+                    Carefully
+                  </p>
+                </div>
+
+                <div class="add-product">
+                  <button
+                    type="submit"
+                    class="btn add_pro_btn"
+                    data-bs-toggle="modal"
+                    data-bs-target="#exampleModal"
+                  >
+                    + Add Product
+                  </button>
+
+                  <div
+                    class="modal fade"
+                    id="exampleModal"
+                    tabindex="-1"
+                    aria-labelledby="exampleModalLabel"
+                    aria-hidden="true"
+                  >
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">
+                            Add Product
+                          </h1>
+                          <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                          ></button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="form">
+                            <form action="" class="form-control">
+
+                             <div class="pro_id mb-3">
+                                <label for="" class="form-label">Product ID</label>
+
+                                <input type="text" id="pro_id" class="form-control">
+                             </div>
+                              <div class="pro_name mb-3">
+                                <label for="" class="form-label">Product Name</label>
+                                <input type="text" id="pro_name" class="form-control" />
+                              </div>
+
+                              <div class="category">
+                                <label for="" class="form-label">Category</label>
+                                <select name="" id="pro_category" class="form-select d-flex justify-content-between">
+                                  <i class="fa-solid fa-chevron-down"></i>
+                                  <option value="Beverage">Beverage</option>
+                                  <option value="Instant Food">Instant Food</option>
+                                  <option value="Snack">Snacks</option>
+                                  <option value="Bakery">Bakery</option>
+                                  <option value="Frozen Food">Frozen Food</option>
+                                  <option value="Fresh produce">Fresh Produce</option>
+                                </select>
+                              </div>
+
+                              <div class="cost-price mt-3">
+                                <label for="" class="form-label">Cost Price</label>
+                                <input type="number" id="pro_cost" class="form-control" placeholder="$0.00" />
+                              </div>
+
+                              <div class="sell-price mt-3">
+                                <label for="" class="form-label">Sell Price</label>
+                                <input type="number" id="sell_price" class="form-control" placeholder="$0.00" />
+                              </div>
+
+                              <div class="pro-img mt-3">
+                                <label for="image_url" class="from-label mb-2">
+                                  Product Image URL
+                                </label>
+                                <input type="text" id="pro_img" class="form-control" placeholder="https//:exampleimage.com" />
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+
+                        <div class="modal-footer">
+                          <button
+                            type="button"
+                            class="btn btn-danger"
+                            data-bs-dismiss="modal"
+                            id="btn_cancel"
+                          >
+                            Cancel
+                          </button>
+
+                          <button type="submit" id="btn_add" class="btn btn-primary">
+                            Add
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 px-3 px-lg-4">
+              <div id="emptyState" class="empty">
+                <p class="inform-empty text-center">No inventory items found 📦</p>
+                <p class="inform-empty text-center">
+                  Your product list is currently empty. Add new product to keep track of your stock
+                </p>
+              </div>
+
+              <div class="table" id="tableEmpty">
+                <table class="table-responsive w-100" id="parentTable">
+                
+                </table>
+              </div>
+
+              <div class="pagination_page">
+                <ul class="pagination justify-content-center" id="pagination"></ul>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script type="module" src="../controller/product.js"></script>
+  
+
+    
+</html>
