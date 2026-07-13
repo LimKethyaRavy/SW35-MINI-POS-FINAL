@@ -4,6 +4,8 @@ export function getProducts(){
 
     return storage ? JSON.parse(storage) : [];
 
+  
+
 }
 
 export function SaveProduct(product){
@@ -18,3 +20,13 @@ export function SaveProduct(product){
 
 
 }
+
+export function delete_Handle(products){
+
+    localStorage.setItem("getProduct", JSON.stringify(products));
+   
+
+}
+
+// console.log(JSON.parse(localStorage.getItem("getProduct")));
+// localStorage.clear(); 
