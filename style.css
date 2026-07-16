@@ -235,8 +235,9 @@ body {
 /* =======================Main-Content================= */
 .main-content {
   width: 100%;
-  min-height: calc(100vh - 80px);
+  height: auto;
   overflow: visible;
+  flex-shrink: 0;
 }
 .content {
   height: 100px;
@@ -490,3 +491,173 @@ body {
   }
 
 }
+
+/*===================== Product Card display ============== */
+
+.pos-card {
+    width: 220px;
+    border: none;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    cursor: pointer;
+    user-select: none;
+  }
+  .pos-card:active {
+    transform: scale(0.97);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+  }
+  .pos-card img {
+    height: 140px;
+    object-fit: cover;
+    width: 100%;
+    background: #e9ecef;
+  }
+
+  .product_img {
+
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+  }
+  .pos-card .card-body {
+    padding: 12px 14px 14px;
+  }
+  .pos-card .product-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #212529;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .pos-card .product-price {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #2b8a3e;
+  }
+
+
+/* Make the middle column a column flex layout so the scroll area can flex to fill remaining height */
+.col-lg-8.col-md-8 {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 160px);
+}
+
+.card_display {
+  flex: 1 1 auto;       /* takes up all remaining vertical space */
+  overflow-y: auto;      /* scrolls only this section */
+  overflow-x: hidden;
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-content: flex-start; /* cards stack from the top, not centered/stretched */
+}
+
+/* optional: nicer scrollbar */
+.card_display::-webkit-scrollbar {
+  width: 8px;
+}
+.card_display::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 4px;
+}
+
+.full_pay_btn {
+  width: 100%;
+  max-width: 550px;
+  height: 50px;
+  background-color: #eafaf1;
+  border: 1px solid #00bfa5;
+  border-radius: 10px;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  color: var(--sidebar-bg);
+}
+
+.operation_date {
+  width: 100%;
+  max-width: 400px;
+  height: 50px;
+  background-color: rgb(231, 231, 231);
+  border-radius: 2cqmin;
+}
+
+
+/* =================cart============ */
+
+  #order_list {
+    max-width: 340px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 12px;
+    padding: 8px;
+  }
+  .order-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 4px;
+  }
+  .order-item + .order-item {
+    border-top: 1px solid #eee;
+  }
+  .order-item img {
+    width: 44px;
+    height: 44px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+  .order-item .info {
+    flex: 1;
+    min-width: 0;
+  }
+  .order-item .item-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1971c2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .order-item .item-price {
+    font-size: 0.85rem;
+    color: #1971c2;
+  }
+  .qty-control {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #f1f3f5;
+    border-radius: 6px;
+    padding: 2px 6px;
+  }
+  .qty-control button {
+    border: none;
+    background: transparent;
+    width: 20px;
+    height: 20px;
+    font-weight: 700;
+    color: #495057;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .qty-control span {
+    min-width: 14px;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  .remove-btn {
+    border: none;
+    background: transparent;
+    color: #e03131;
+    font-size: 0.9rem;
+    cursor: pointer;
+    flex-shrink: 0;
+  }

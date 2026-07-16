@@ -6,8 +6,6 @@ export function getProducts(){
 
     return storage ? JSON.parse(storage) : [];
 
-  
-
 }
 
 // ===============Save produdct data and push to local storage

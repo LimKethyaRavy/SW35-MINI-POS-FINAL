@@ -206,7 +206,7 @@ $("#btn_update").click((e) => {
       name: $("#edit_pro_name").val(),
       category: $("#edit_pro_category").val(),
       cost: $("#edit_pro_cost").val(),
-      sell: $("#edit_sell_price").val(),
+      sell_Price: $("#edit_sell_price").val(),
       image: $("#edit_pro_img").val()
     }
   }
@@ -217,7 +217,11 @@ $("#btn_update").click((e) => {
 
   alert("Pruduct update successfully ✅");
 
+
   rendertable();
+  
+  edit_Clearform();
+
 
   globalindex = -1;
   
@@ -225,4 +229,15 @@ $("#btn_update").click((e) => {
 
 }) 
 
+
+function edit_Clearform(){
+
+  $("#edit_pro_id").val("");
+  $("#edit_pro_name").val("");
+  $("#edit_pro_category").val("");
+  $("#edit_pro_cost").val("");
+  $("#edit_sell_price").val("");
+  $("#edit_pro_img").val("");
+
+}
 

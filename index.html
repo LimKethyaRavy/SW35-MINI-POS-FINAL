@@ -65,7 +65,7 @@
                   </div>
                   <div>
                     <div class="brand-title">FreshMart</div>
-                    <div class="brand-subtitle">POS System</div>
+                    <div class="brand-subtitle">Fresh Mart POS System</div>
                   </div>
                 </div>
 
@@ -105,53 +105,47 @@
         
 
           <!-- Main Content -->
-          <div class="col-lg-8 col-md-8">
+            <div class="col-lg-8 col-md-8">
 
             <div class="main-content d-flex justify-content-between p-3">
-              <div class="filter m-3 ">
+              <div class="filter m-3">
+                <ul class="d-flex text-decoration-none filter-ul list-unstyled">
+                  <li><a class="filter-product filter-active" href="#">All Product</a></li>
+                  <li><a class="filter-product" href="#">Food</a></li>
+                  <li><a class="filter-product" href="#">Beverage</a></li>
+                  <li><a class="filter-product" href="#">Order</a></li>
+                </ul>
+              </div>
 
-              <ul class="d-flex text-decoration-none  filter-ul list-unstyled">
-                <li>
-                  <a class="filter-product filter-active" href="#">All Product</a>
-                </li>
-                <li>
-                  <a class="filter-product" href="#"> Food</a>
-                </li>
-                <li>
-                  <a class="filter-product" href="#">Beverage</a>
-                </li>
-                <li>
-                  <a class="filter-product" href="#">Order</a>
-                </li>
-                  </ul>
-                  
-            </div>     
-            
-                <div class="search-product position-relative">
-              <i class="fa-solid fa-magnifying-glass position-absolute d-flex justify-content-center pb-2 top-50 start-0 translate-middle-y ms-3 text-secondary"></i>
-
-              <input type="text" class="form-control ps-5" id="search_product" placeholder="Search products">
-          </div>
+              <div class="search-product position-relative">
+                <i class="fa-solid fa-magnifying-glass position-absolute d-flex justify-content-center pb-2 top-50 start-0 translate-middle-y ms-3 text-secondary"></i>
+                <input type="text" class="form-control ps-5" id="search_product" placeholder="Search products">
+              </div>
             </div>
 
-          </div>
+         
+            <div class="card_display" id="card_display">
+
+              <!-- <div class="product-card" style="width: 160px;">
+                <img src="./image/product1.jpg" class="card-img-top" alt="">
+                <div class="p-2">
+                  <div class="fw-semibold">Product Name</div>
+                  <div class="text-success">$2.50</div>
+                </div>
+              </div> -->
+          
+            </div>
+
+              </div>
 
           <div class="col-lg-4 col-md-3">
                     <aside class="order-summary">
           <h5 class="mb-3">Order Detail</h5>
 
-          <ul class="order-items list-unstyled flex-grow-1">
-            <!-- example line item -->
-            <li class="d-flex justify-content-between align-items-center mb-2">
-              <div>
-                <div class="fw-semibold">Product Name</div>
-                <small class="text-muted">$2.50 x 2</small>
-              </div>
-              <div class="d-flex align-items-center gap-2">
-                <span>$5.00</span>
-                <button class="btn btn-sm btn-light border"><i class="fa-solid fa-xmark"></i></button>
-              </div>
-            </li>
+          <ul class="order-items list-unstyled flex-grow-1" id="card_list">
+          
+
+        
           </ul>
 
           <div class="order-totals mt-auto">
@@ -229,9 +223,13 @@
                 <input type="text" class="form-control" id="cash_return" placeholder="$0.00">
 
               </div>
-            
+              
+              <div class="button w-100 d-flex gap-2">
 
-            <button class="btn btn-success w-100">Payment</button>
+              <button class="btn btn-danger w-50">Cancel</button>
+            <button class="btn btn-success w-50">Payment</button>
+              </div>
+           
           </div>
         </aside>
           </div>
@@ -241,7 +239,9 @@
     </div>
   </body>
 
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="./controller/datetime.js"></script>
+  <script type="module" src="./view/cardRender.js"></script>
 
 
 </html>

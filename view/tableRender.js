@@ -20,7 +20,7 @@ export function rendertable() {
     const thead = document.createElement("thead");
     const tr = document.createElement("tr");
     const headerData = ["Product ID", "Product Icon", "Product Name", "Category", "Cost Price", "Sell Price", "Action"];
-
+    
     headerData.forEach(item => {
         const th = document.createElement("th");
         th.textContent = item;
@@ -41,9 +41,13 @@ export function rendertable() {
         table.append(tbody);
 
         return;
+    } else {
+
+     $("#emptyState").hide();
+
     }
 
-    $("#emptyState").hide();
+  
 
     // =================== Pagination control=========== =============
 
@@ -62,7 +66,7 @@ export function rendertable() {
 
     pageItem.forEach(row => {
         const td = `
-        <tr>
+        <tr align="center">
             <td>${row.id}</td>
 
             <td><img src="${row.image}"></td>
