@@ -60,15 +60,45 @@ export function deleteOrder(id){
 
 //   console.log(cart_selected);
 
-
-
-
   }
     
 
 });
     }
+}
 
+
+// ==============Cancle Order===============
+
+export function cancelOrder(cart_selected, callback){
+
+
+    Swal.fire({
+  title: "Are you you want to cancel the Order?",
+  text: "All select item will be remove",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Delete Order"
+}).then((result) => {
+  if (result.isConfirmed) {
+
+    
+    cart_selected.length = 0;
+
+    callback();
+
+        Swal.fire({
+    title: "Deleted!",
+    text: "Product order have been deleted",
+    icon: "success"
+  });
+
+  }
+    
+
+});
 
 
 }

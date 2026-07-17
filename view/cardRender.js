@@ -1,13 +1,15 @@
 import { getProducts } from "../models/storage.js";
 import { calculateTotal, Payment, cashReturn } from "../controller/payment.js";
-import { decreaseQty, increaseQty, deleteOrder } from "../controller/cartController.js";
+import { decreaseQty, increaseQty, deleteOrder, cancelOrder } from "../controller/cartController.js";
 
 
 // =============== Get Product from Storage =============
 // ============= to display on the page=========
 const products = getProducts();
 
-   let output = "";
+function renderProduct(products){
+
+let output = "";
 
     products.forEach(pro => {
 
@@ -23,16 +25,23 @@ const products = getProducts();
 
    
    `;  
+
+
+    document.getElementById("card_display").innerHTML = output;
     
 }
 );
+}
+
+renderProduct(products);
+   
 
 // =================Order Detail =======================
 
 // =============== product Click event control============== 
-document.getElementById("card_display").innerHTML = output;
+// document.getElementById("card_display").innerHTML = output;
 
-console.log(products);
+// console.log(products);
 
 $(document).on('click', "#pos-card", function(e)
     {
@@ -184,14 +193,61 @@ $(document).on("input", "#cash-recive", function(){
 })
 
 
-// =====================Filter price ====================
+// ===================== Pay exact amount ====================
 
-$(document).on("click", "#five-dollar", function(){
+$(document).on("click", "#pay_exact_amount", function(){
 
   const total = calculateTotal(cart_selected);
+  
+  document.getElementById("cash-recive").value = total.toFixed(2);
+  cashReturn(total)
+
+
+})
+
+
+// ===============Product search ======================
+
+let search_product = document.getElementById("search_product");
+
+search_product.addEventListener("input", function(){
+
+  let keyword = this.value.toLowerCase();
+  let products = getProducts();
+
+  let found = products.filter(pro => pro.name.toLowerCase().includes(keyword));
+
+  if(found.length === 0){
+
+    document.getElementById("card_display").innerHTML = `
+    
+    <center>
+
+    <p class="text-center fs-2 txt_notfound"> Product not found </p>
+
+    </center>
+    
+    
+    `;
+
+  }else {
+     renderProduct(found);
+  }
 
   
 })
+
+//========================== Cancel Order=================
+
+$(document).on("click", "#btn_cancel", function(){
+
+  cancelOrder(cart_selected, renderCartOrder);
+
+
+})
+
+
+
 
    
     

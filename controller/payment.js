@@ -74,7 +74,6 @@ export function Payment(total){
         });
 
        
-
     }
    
 
@@ -92,7 +91,7 @@ export function cashReturn(total){
 }
         
 
-// ========================Filter price======================
+
 
 
     
