@@ -1,1 +1,0 @@
-import { getProducts } from "../models/storage";

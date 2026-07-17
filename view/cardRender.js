@@ -1,4 +1,6 @@
 import { getProducts } from "../models/storage.js";
+import { calculateTotal, Payment, cashReturn } from "../controller/payment.js";
+import { decreaseQty, increaseQty, deleteOrder } from "../controller/cartController.js";
 
 
 // =============== Get Product from Storage =============
@@ -12,7 +14,7 @@ const products = getProducts();
    output += `
     
    <div class="card pos-card" id="pos-card" data-id='${pro.id}'">
-  <img class="product_img" src="${pro.image}" alt="Cappuccino">
+  <img class="product_img" src="${pro.image}" alt="">
   <div class="card-body">
     <div class="product-name">${pro.name}</div>
     <div class="product-price">$ ${pro.sell_Price}</div>
@@ -52,7 +54,7 @@ $(document).on('click', "#pos-card", function(e)
 
 
   //  ====================cart list control====================
-  let cart_selected = [];
+  export let cart_selected = [];
 
    function addToCart(productID){
 
@@ -94,7 +96,7 @@ $(document).on('click', "#pos-card", function(e)
 
   //  ================Cart Render=============
 
-  function renderCartOrder(){
+  export function renderCartOrder(){
 
     let cart_list = document.getElementById("card_list");
 
@@ -113,42 +115,83 @@ $(document).on('click', "#pos-card", function(e)
             <div class="item-price">$${item.sell_Price}</div>
           </div>
           <div class="qty-control">
-            <button class="qty-minus">-</button>
+            <button class="qty-minus" data-id="${item.id}" id="qty-minus">-</button>
             <span id="price_qty">${item.qty}</span>
-            <button class="qty-plus">+</button>
+            <button class="qty-plus" data-id="${item.id}" id="qty-plus">+</button>
           </div>
-          <button class="remove-btn"><i class="fa-solid fa-trash"></i></button>
+          <button class="btn btn-danger btn_delete_order" data-id="${item.id}"><i class="fa-solid fa-trash"></i></button>
         </div>
     
     </li>
     `;    
 
-    let total = 0;
+    })
 
-    cart_selected.forEach(item => {
-
-      total += item.sell_Price * item.qty;
-
-   
-
-      
-    });
-  
-       document.getElementById("price_qty").textContent = total;
-      
-    });
-        
-    
     cart_list.innerHTML = cart_display;
 
-  }
+    calculateTotal(cart_selected);
 
 
-    
+  };
+
+
+// =================== for Increase Decrease Delete product order click handle===========
+
+$(document).on("click", ".qty-plus", function(){
+
+  const id = $(this).data("id");
+
+  increaseQty(id);
+  
+})
+
+$(document).on("click", ".qty-minus", function(){
+
+  const id = $(this).data("id");
+
+  decreaseQty(id);
+})
+
+
+$(document).on("click", ".btn_delete_order", function(){
+
+  const id = $(this).data("id");
+
+  deleteOrder(id);
+})
 
 
 
+// ===============Final Payment=============
 
+$(document).on("click", ".payment_btn", function(){
+
+  const total = calculateTotal(cart_selected);
+
+  Payment(total);
+
+})
+
+// cash return update ===================
+
+$(document).on("input", "#cash-recive", function(){
+
+  const total = calculateTotal(cart_selected);
+
+  cashReturn(total);
+
+  
+})
+
+
+// =====================Filter price ====================
+
+$(document).on("click", "#five-dollar", function(){
+
+  const total = calculateTotal(cart_selected);
+
+  
+})
 
    
     

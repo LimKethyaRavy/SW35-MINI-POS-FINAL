@@ -150,62 +150,34 @@
 
           <div class="order-totals mt-auto">
             <div class="d-flex justify-content-between mb-1">
-              <span>Subtotal</span><span>$0.00</span>
+              <span>Subtotal</span><span id="sub_total">$0.00</span>
             
             </div>
             
             <div class="d-flex justify-content-between mb-1">
-              <span>Total USD</span><span>$0.00</span>
+                <span>Total USD</span><span id="usd_subtotal">$0.00</span>
             </div>
 
                 <hr>
 
                 <div class="d-flex justify-content-between mb-1">
-              <span>Total KHR</span><span>$0.00</span>
+
+              
+              <span>Total KHR</span><span id="khr_subtotal">៛ 0.00</span>
+
             </div>
 
 
             <hr>
 
             <div class="d-flex justify-content-between fw-bold fs-5 mb-3">
-              <span>Total</span><span>$0.00</span>
+              <span>Total</span><span id="total_all">$0.00</span>
             </div>
 
             <div class="cash-recive mb-3">
               <span class="cash-recive">Cash Recive </span>
               <input type="number" class="form-control mt-3" placeholder="$0.00" id="cash-recive">
             </div>
-
-            <div class="filter-pay d-flex flex-row my-3 justify-content-center">
-
-              <div class="button-filter">
-                <button class="btn" id="five-dollar">
-
-                $5
-
-              </button>
-
-              <button class="btn" id="ten-dollar">
-
-                $10
-
-              </button>
-
-              <button class="btn" id="twenty-dollar">
-
-                $20
-
-              </button>
-
-              <button class="btn" id="thirty-dollar">
-
-                $30
-
-              </button>
-            </div>
-
-
-              </div>
 
               <div class="pay-full my-3 d-flex justify-content-center">
 
@@ -226,8 +198,8 @@
               
               <div class="button w-100 d-flex gap-2">
 
-              <button class="btn btn-danger w-50">Cancel</button>
-            <button class="btn btn-success w-50">Payment</button>
+              <button class="btn btn-danger w-50" id="btn_cancel">Cancel</button>
+            <button class="btn btn-success w-50 payment_btn" id="payment_btn">Payment</button>
               </div>
            
           </div>
@@ -240,6 +212,7 @@
   </body>
 
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="./controller/datetime.js"></script>
   <script type="module" src="./view/cardRender.js"></script>
 
