@@ -25,6 +25,9 @@ const products = getProducts();
 }
 );
 
+// =================Order Detail =======================
+
+// =============== product Click event control============== 
 document.getElementById("card_display").innerHTML = output;
 
 console.log(products);
@@ -40,30 +43,78 @@ $(document).on('click', "#pos-card", function(e)
 
     //    alert(card_id)
 
-    console.log(card_id) 
+    // console.log(card_id)
 
-    let product = getProducts();
+    addToCart(card_id);
 
-    product = products.find(p => p.id == card_id)
+   } );
 
-    console.log(product);
 
-    let productQTy = 1;
+
+  //  ====================cart list control====================
+  let cart_selected = [];
+
+   function addToCart(productID){
+
+    let products = getProducts();
+
+   let product = products.find(p => p.id == productID);
+
+    
+    // console.log(product);
+
+    let search_selected = cart_selected.find(
+      item => item.id == productID
+    );
+
+    if(search_selected){
+
+      search_selected.qty++;
+
+
+    }else {
+
+      let selected_product = {
+
+        id: product.id,
+        image: product.image,
+        name: product.name,
+        sell_Price: product.sell_Price,
+        qty: 1,
+
+      }
+
+      cart_selected.push(selected_product);
+    }
+
+    renderCartOrder();
+
+
+   }
+
+  //  ================Cart Render=============
+
+  function renderCartOrder(){
+
+    let cart_list = document.getElementById("card_list");
+
 
     let cart_display = "";
-        
-    cart_display += `
+
+    cart_selected.forEach(item => {
+      
+      cart_display += `
 
     <li>
-     <div class="order-item" data-id="${product.id}">
-          <img src="${product.image}" alt="">
+     <div class="order-item" data-id="${item.id}">
+          <img src="${item.image}" alt="">
           <div class="info">
-            <div class="item-name">${product.name}</div>
-            <div class="item-price">$${product.sell_Price}</div>
+            <div class="item-name">${item.name}</div>
+            <div class="item-price">$${item.sell_Price}</div>
           </div>
           <div class="qty-control">
             <button class="qty-minus">-</button>
-            <span>${productQTy}</span>
+            <span id="price_qty">${item.qty}</span>
             <button class="qty-plus">+</button>
           </div>
           <button class="remove-btn"><i class="fa-solid fa-trash"></i></button>
@@ -72,10 +123,34 @@ $(document).on('click', "#pos-card", function(e)
     </li>
     `;    
 
-          document.getElementById("card_list").innerHTML += cart_display;
+    let total = 0;
 
+    cart_selected.forEach(item => {
+
+      total += item.sell_Price * item.qty;
+
+   
+
+      
+    });
+  
+       document.getElementById("price_qty").textContent = total;
+      
+    });
         
-   } );
+    
+    cart_list.innerHTML = cart_display;
+
+  }
+
+
+    
+
+
+
+
+
+   
     
 
   
