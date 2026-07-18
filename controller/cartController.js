@@ -1,6 +1,7 @@
 
 import { cart_selected, renderCartOrder } from "../view/cardRender.js";
 
+//  ================Increase qty function==============
 export function increaseQty(id){
 
     let item = cart_selected.find(item => item.id == id);
@@ -14,6 +15,7 @@ export function increaseQty(id){
     renderCartOrder(cart_selected);
 }
 
+// ================Decrease Qty function=====================
 export function decreaseQty(id){
 
     let item = cart_selected.find(item => item.id == id);
@@ -27,6 +29,10 @@ export function decreaseQty(id){
 
     renderCartOrder(cart_selected);
 }
+
+
+
+// ================Delete Prodcut order=============
 
 export function deleteOrder(id){
 

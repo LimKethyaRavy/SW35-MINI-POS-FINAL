@@ -205,26 +205,8 @@ body {
   object-fit: cover;
 }
 
-table {
-  font-family: "Roboto", sans-serif;
-
-}
-
-thead {
-  background-color: var(--sidebar-active);
-}
-
-tbody img {
-
-  width: 70px;
-  height: 70px;
-  object-fit: cover;
-
-
-}
-
 html, body {
-  overflow-x: hidden; 
+  overflow-x: hidden;
   max-width: 100%;
 }
 
@@ -239,9 +221,175 @@ html, body {
   max-width: 100%;
 }
 
+/* =================== Sidebar Toggle (tablet/mobile) =================== */
+
+#sidebarToggle {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--sidebar-bg);
+  flex-shrink: 0;
+}
+
+.sidebar-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1500;
+}
+
+.sidebar-backdrop.show {
+  display: block;
+}
+
+@media (min-width: 992px) {
+  #sidebarToggle,
+  .sidebar-backdrop {
+    display: none !important;
+  }
+}
+
+@media (max-width: 991px) {
+  /* sidebar column no longer takes up grid space, becomes an off-canvas drawer */
+  .col-lg-2.col-md-3 {
+    width: 0;
+    padding: 0;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 260px;
+    height: 100vh;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 2000;
+  }
+
+  .sidebar.show {
+    transform: translateX(0);
+  }
+
+  main.col-lg-10.col-md-9.col-12 {
+    width: 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+/* =================== Theme-matched Table =================== */
+
+.table {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.05);
+  padding: 4px;
+  overflow: hidden;
+}
+
 table {
   font-family: "Roboto", sans-serif;
   width: 100%;
-  min-width: 600px; 
+  min-width: 600px;
+  border-collapse: separate;
+  border-spacing: 0;
 }
 
+thead {
+  background-color: var(--sidebar-active);
+}
+
+thead th {
+  color: #fff;
+  font-weight: 600;
+  padding: 14px 16px;
+  text-align: left;
+  border: none;
+}
+
+thead th:first-child {
+  border-top-left-radius: 12px;
+}
+
+thead th:last-child {
+  border-top-right-radius: 12px;
+}
+
+tbody tr {
+  border-bottom: 1px solid #eef2f1;
+  transition: background-color 0.15s ease;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f2fbf9;
+}
+
+tbody tr:hover {
+  background-color: rgba(0, 191, 165, 0.12);
+}
+
+tbody td {
+  padding: 12px 16px;
+  color: #052258;
+  vertical-align: middle;
+  border: none;
+}
+
+tbody img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* action buttons inside table rows (edit/delete), if product.js uses these classes */
+.btn-edit,
+.edit_btn {
+  background-color: var(--sidebar-active);
+  border: none;
+  color: #fff;
+}
+
+.btn-edit:hover,
+.edit_btn:hover {
+  background-color: var(--sidebar-bg);
+  color: #fff;
+}
+
+.btn-delete,
+.delete_btn {
+  background-color: #fff;
+  border: 1px solid #e03131;
+  color: #e03131;
+}
+
+.btn-delete:hover,
+.delete_btn:hover {
+  background-color: #e03131;
+  color: #fff;
+}
+
+/* =================== Pagination themed =================== */
+
+.pagination .page-link {
+  color: var(--sidebar-bg);
+  border: 1px solid #e5e7eb;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: var(--sidebar-active);
+  border-color: var(--sidebar-active);
+  color: #fff;
+}
+
+.pagination .page-link:hover {
+  background-color: rgba(0, 191, 165, 0.14);
+  color: #052258;
+}

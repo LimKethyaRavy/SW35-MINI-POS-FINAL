@@ -18,11 +18,16 @@
 
     <title>SALE TRANSITION</title>
   </head>
+
   <body>
     <div class="container-fluid p-0">
       <div class="main">
         <div class="topbar">
           <div class="d-flex align-items-center gap-3">
+            <!-- Sidebar toggle: only visible on tablet/mobile (<992px) -->
+            <button class="btn-icon d-lg-none" id="sidebarToggle" aria-label="Toggle menu">
+              <i class="fa-solid fa-bars"></i>
+            </button>
             <h4 class="sale_transition">SALE MENU</h4>
           </div>
 
@@ -30,7 +35,7 @@
             <div class="operation_date d-flex">
               <div class="icon-date d-flex pt-3 ps-3">
                  <i class="fa-solid fa-calendar"></i>
-               
+
               </div>
 
               <div class="txt-date d-flex justify-content-center align-items-center ps-5 pt-2">
@@ -38,6 +43,7 @@
               </div>
             </div>
           </div>
+
           <div class="d-flex align-items-center gap-3">
             <button class="btn-icon">
               <i class="fa-solid fa-bell"></i>
@@ -54,10 +60,8 @@
         </div>
 
         <div class="content-shell">
-          <div class="row g-0">
-          <!--======================= Sidebar=============================== -->
-        
-            <div class="sidebar">
+             <!--======================= Sidebar=============================== -->
+             <!-- removed the redundant outer .sidebar div, this <aside> is the only sidebar element now -->
               <aside class="sidebar" id="sidebar">
                 <div class="sidebar-brand d-flex justify-content-center">
                   <div class="logo-box bg-light">
@@ -70,9 +74,7 @@
                 </div>
 
                 <nav class="sidebar-nav">
-                  <a href="#" class="nav-link"
-                    ><i class="fa-solid fa-house"></i> Dashboard</a
-                  >
+               
                   <a href="#" class="nav-link active"
                     ><i class="fa-solid fa-cart-shopping"></i> Sale Menu</a
                   >
@@ -80,15 +82,11 @@
                     ><i class="fa-solid fa-bag-shopping"></i> Product
                     Manegement</a
                   >
-                  <a href="#" class="nav-link"
-                    ><i class="fa-solid fa-users"></i>Customer</a
+
+                 <a href="./components/addprodluct.html" class="nav-link"
+                 ><i class="fa-solid fa-user"></i> About US</a
                   >
-                  <a href="#" class="nav-link"
-                    ><i class="fa-solid fa-chart-bar"></i> Report</a
-                  >
-                  <a href="#" class="nav-link"
-                    ><i class="fa-solid fa-gear"></i> Settings</a
-                  >
+             
                 </nav>
 
                 <div class="sidebar-footer d-flex align-items-center gap-2">
@@ -101,30 +99,57 @@
                   </div>
                 </div>
               </aside>
-            </div>
-        
 
+          <!-- Backdrop overlay shown behind sidebar on tablet/mobile when menu is open -->
+          <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+          <div class="row g-0">
           <!-- Main Content -->
             <div class="col-lg-8 col-md-8">
 
             <div class="main-content d-flex justify-content-between p-3">
               <div class="filter m-3">
-                <ul class="d-flex text-decoration-none filter-ul list-unstyled">
-                  <li><a class="filter-product filter-active" href="#">All Product</a></li>
-                  <li><a class="filter-product" href="#">Food</a></li>
-                  <li><a class="filter-product" href="#">Beverage</a></li>
-                  <li><a class="filter-product" href="#">Order</a></li>
-                </ul>
-              </div>
+                 <button class="filter-product filter-active" data-category="All">
+                        All Product
+                    </button>
 
-              <div class="search-product position-relative">
-                <i class="fa-solid fa-magnifying-glass position-absolute d-flex justify-content-center pb-2 top-50 start-0 translate-middle-y ms-3 text-secondary"></i>
-                <input type="text" class="form-control ps-5" id="search_product" placeholder="Search products">
+                    <button class="btn filter-product" data-category="Beverage">
+                         Beverage
+                    </button>
+
+                    <button class="btn filter-product" data-category="Instant Food">
+                        Instant Food
+                    </button>
+
+                    <button class="btn filter-product" data-category="Snack">
+                        Snack
+                    </button>
+
+
+                    <button class="btn filter-product" data-category="Bakery">
+                        Bakery
+                    </button>
+
+
+                    <button class="btn filter-product" data-category="Frozen Food">
+                        Frozen Food
+                    </button>
+
+
+                    <button class="btn filter-product" data-category="Fresh produce">
+                        Fresh Produce
+                    </button>
+
+                    <div class="search-product position-relative">
+                      <i class="fa-solid fa-magnifying-glass position-absolute d-flex justify-content-center pb-2 top-50 start-0 translate-middle-y ms-3 text-secondary"></i>
+                      <input type="text" class="form-control" id="search_product" placeholder="Search products">
+                    </div>
               </div>
             </div>
 
-         
-            <div class="card_display" id="card_display">
+
+
+              <div class="card_display" id="card_display">
 
               <!-- <div class="product-card" style="width: 160px;">
                 <img src="./image/product1.jpg" class="card-img-top" alt="">
@@ -133,27 +158,29 @@
                   <div class="text-success">$2.50</div>
                 </div>
               </div> -->
-          
+
             </div>
+
+
 
               </div>
 
-          <div class="col-lg-4 col-md-3">
+          <div class="col-lg-4 col-md-4">
                     <aside class="order-summary">
           <h5 class="mb-3">Order Detail</h5>
 
           <ul class="order-items list-unstyled flex-grow-1" id="card_list">
-          
 
-        
+
+
           </ul>
 
           <div class="order-totals mt-auto">
             <div class="d-flex justify-content-between mb-1">
               <span>Subtotal</span><span id="sub_total">$0.00</span>
-            
+
             </div>
-            
+
             <div class="d-flex justify-content-between mb-1">
                 <span>Total USD</span><span id="usd_subtotal">$0.00</span>
             </div>
@@ -162,7 +189,7 @@
 
                 <div class="d-flex justify-content-between mb-1">
 
-              
+
               <span>Total KHR</span><span id="khr_subtotal">៛ 0.00</span>
 
             </div>
@@ -182,7 +209,7 @@
               <div class="pay-full my-3 d-flex justify-content-center">
 
                 <button class="full_pay_btn" id="pay_exact_amount">
-                  
+
                   Pay Exact Amount
 
                 </button>
@@ -195,26 +222,54 @@
                 <input type="text" class="form-control" id="cash_return" placeholder="$0.00">
 
               </div>
-              
+
               <div class="button w-100 d-flex gap-2">
 
               <button class="btn btn-danger w-50" id="btn_cancel">Cancel</button>
             <button class="btn btn-success w-50 payment_btn" id="payment_btn">Payment</button>
               </div>
-           
+
           </div>
         </aside>
           </div>
- 
+
         </div>
       </div>
     </div>
   </body>
 
+
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="./controller/datetime.js"></script>
   <script type="module" src="./view/cardRender.js"></script>
+   
+  <script>
+        const sidebarToggle = document.getElementById('sidebarToggle');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarBackdrop = document.getElementById('sidebarBackdrop');
 
+    function openSidebar() {
+      sidebar.classList.add('show');
+      sidebarBackdrop.classList.add('show');
+    }
+    function closeSidebar() {
+      sidebar.classList.remove('show');
+      sidebarBackdrop.classList.remove('show');
+    }
+
+    sidebarToggle.addEventListener('click', () => {
+      sidebar.classList.contains('show') ? closeSidebar() : openSidebar();
+    });
+
+    sidebarBackdrop.addEventListener('click', closeSidebar);
+
+    // close sidebar automatically after tapping a nav link on tablet
+    document.querySelectorAll('.sidebar-nav .nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth < 992) closeSidebar();
+      });
+    });
+  </script>
 
 </html>

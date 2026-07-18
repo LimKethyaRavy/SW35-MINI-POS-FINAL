@@ -1,13 +1,13 @@
 import { getProducts } from "../models/storage.js";
 import { calculateTotal, Payment, cashReturn } from "../controller/payment.js";
 import { decreaseQty, increaseQty, deleteOrder, cancelOrder } from "../controller/cartController.js";
-
+import { product_filter } from "../controller/filterCategory.js";
 
 // =============== Get Product from Storage =============
 // ============= to display on the page=========
 const products = getProducts();
 
-function renderProduct(products){
+export function renderProduct(products){
 
 let output = "";
 
@@ -15,15 +15,13 @@ let output = "";
 
    output += `
     
-   <div class="card pos-card" id="pos-card" data-id='${pro.id}'">
-  <img class="product_img" src="${pro.image}" alt="">
-  <div class="card-body">
-    <div class="product-name">${pro.name}</div>
-    <div class="product-price">$ ${pro.sell_Price}</div>
-  </div>
-    </div>
-
-   
+   <div class="card pos-card" data-id="${pro.id}">
+     <img class="product_img" src="${pro.image}" alt="${pro.name}">
+     <div class="card-body">
+       <div class="product-name">${pro.name}</div>
+       <div class="product-price">$ ${pro.sell_Price}</div>
+     </div>
+   </div>
    `;  
 
 
@@ -43,7 +41,7 @@ renderProduct(products);
 
 // console.log(products);
 
-$(document).on('click', "#pos-card", function(e)
+$(document).on('click', ".pos-card", function(e)
     {
     
        const card = e.target.closest(".pos-card");
@@ -237,6 +235,12 @@ search_product.addEventListener("input", function(){
   
 })
 
+
+// ===============Prodcut Filter===============
+
+
+product_filter();
+
 //========================== Cancel Order=================
 
 $(document).on("click", "#btn_cancel", function(){
@@ -245,22 +249,3 @@ $(document).on("click", "#btn_cancel", function(){
 
 
 })
-
-
-
-
-   
-    
-
-  
-
-
-
-
-
-    
-
-
-
-
-
