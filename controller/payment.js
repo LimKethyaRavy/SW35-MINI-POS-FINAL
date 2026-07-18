@@ -156,7 +156,7 @@ function printReceipt(cart_selected, total, cash_recive, cash_return){
             </tr>`;
         });
 
-        const khr = (total * Usd_to_Khr).toLocaleString();
+        const khr = Math.round((total * Usd_to_Khr)).toLocaleString();
 
         receiptWindow.document.write(`
           <html>

@@ -145,7 +145,6 @@ body {
   font-size: 0.75rem;
 }
 
-/* Backdrop shown behind sidebar on tablet/mobile when menu is open */
 .sidebar-backdrop {
   display: none;
   position: fixed;

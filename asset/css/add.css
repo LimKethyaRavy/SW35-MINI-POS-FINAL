@@ -16,23 +16,31 @@
   --noraml-txt: #ffffff;
 }
 
-body {
+html, body {
+  height: 100%;
+  overflow: hidden; /* the page itself never scrolls; only .parent-right does */
+  overflow-x: hidden;
+  max-width: 100%;
   background-color: #f3f4f6;
   font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 /* ==================Container============== */
 
-.parent-sidebar {
-  width: 20%;
-  background-color: #052258;
+/* This matches your actual markup: Bootstrap columns, not .parent-sidebar */
+
+.col-lg-2.col-md-3 {
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
   height: 100vh;
+  overflow: hidden;   /* the column itself never scrolls */
 }
 
 /* ===== Sidebar ===== */
 .sidebar {
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;      /* fixed height instead of min-height so it can't grow/scroll */
   background-color: var(--sidebar-bg);
   color: #cbd5e1;
   position: relative;
@@ -40,6 +48,7 @@ body {
   left: auto;
   display: flex;
   flex-direction: column;
+  overflow: hidden;   /* if nav links overflow, this clips instead of scrolling the page */
 }
 
 .sidebar-brand {
@@ -53,14 +62,27 @@ body {
 .sidebar-brand .logo-box {
   width: 42px;
   height: 42px;
-  background: var(--brand-blue);
+  background: #fff;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.25rem;
   color: #fff;
+  margin-left: 40px;
   flex-shrink: 0;
+
+}
+
+.logo-box {
+  width: 100px;
+  height: 100px;
+}
+
+.logo-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .sidebar-brand .brand-title {
@@ -78,6 +100,7 @@ body {
 .sidebar-nav {
   flex: 1;
   padding: 1rem 0.75rem;
+  overflow-y: auto;   /* if the nav list itself is long, ONLY this list scrolls internally */
 }
 
 .sidebar-nav .nav-link {
@@ -136,12 +159,13 @@ body {
   font-size: 0.75rem;
 }
 
+
 /* ==========Right Side============== */
 
-.parent-right {
-  width: 80%;
-  height: 400px;
+main.col-lg-10.col-md-9.col-12 {
   height: 100vh;
+  overflow-y: auto;    /* this is the ONLY thing that scrolls */
+  overflow-x: hidden;
 }
 
 .header-rightbar {
@@ -205,11 +229,6 @@ body {
   object-fit: cover;
 }
 
-html, body {
-  overflow-x: hidden;
-  max-width: 100%;
-}
-
 .parent-sidebar,
 .parent-right {
   max-width: 100%;
@@ -255,11 +274,15 @@ html, body {
   }
 }
 
+/* =================== Tablet / mobile: off-canvas sidebar =================== */
 @media (max-width: 991px) {
-  /* sidebar column no longer takes up grid space, becomes an off-canvas drawer */
+  /* the column no longer reserves grid space; the aside becomes a fixed drawer */
   .col-lg-2.col-md-3 {
     width: 0;
+    height: auto;
     padding: 0;
+    position: static;
+    overflow: visible;
   }
 
   .sidebar {
@@ -281,6 +304,8 @@ html, body {
     width: 100%;
     flex: 0 0 100%;
     max-width: 100%;
+    height: 100vh;
+    overflow-y: auto;   /* content still scrolls independently, page itself does not */
   }
 }
 

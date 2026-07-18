@@ -29,11 +29,11 @@
           <aside class="sidebar" id="sidebar">
             <div class="sidebar-brand">
               <div class="logo-box">
-                <img src="../image/logo.png" alt="" />
+                <img src="../image/logo.png" widt="80px" height="80px" alt="" />
               </div>
               <div>
                 <div class="brand-title">FreshMart</div>
-                <div class="brand-subtitle">Sale System</div>
+                <div class="brand-subtitle">Fresh Mart POS System</div>
               </div>
             </div>
 
@@ -65,9 +65,12 @@
         <main class="col-lg-10 col-md-9 col-12">
           <div class="row g-3">
             <div class="col-12">
-              <div class="header-rightbar">
-                <h3 class="header-title">Product Manegment</h3>
-              </div>
+              <div class="header-rightbar d-flex align-items-center gap-2">
+                  <button id="sidebarToggle" class="d-lg-none">
+                    <i class="fa-solid fa-bars"></i>
+                  </button>
+                  <h3 class="header-title mb-0">Product Manegment</h3>
+                </div>
             </div>
 
             <div class="col-12">
@@ -324,12 +327,40 @@
         </div>
       </div>
 
+      <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+
   </body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script type="module" src="../controller/product.js"></script>
   
+  <script>
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarBackdrop = document.getElementById('sidebarBackdrop');
 
+    function openSidebar() {
+      sidebar.classList.add('show');
+      sidebarBackdrop.classList.add('show');
+    }
+    function closeSidebar() {
+      sidebar.classList.remove('show');
+      sidebarBackdrop.classList.remove('show');
+    }
+
+    sidebarToggle.addEventListener('click', () => {
+      sidebar.classList.contains('show') ? closeSidebar() : openSidebar();
+    });
+
+    sidebarBackdrop.addEventListener('click', closeSidebar);
+
+    document.querySelectorAll('.sidebar-nav .nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth < 992) closeSidebar();
+      });
+    });
+  </script>
     
 </html>
