@@ -1,12 +1,169 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="../asset/css/abouus.css" />
+
+    <title>About Us - FreshMart POS</title>
+  </head>
+
+  <body>
+    <div class="container-fluid p-0">
+      <div class="row g-0">
+        <div class="col-lg-2 col-md-3">
+          <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+              <div class="logo-box">
+                <img src="../image/logo.png" alt="" />
+              </div>
+              <div>
+                <div class="brand-title">FreshMart</div>
+                <div class="brand-subtitle">Sale System</div>
+              </div>
+            </div>
+
+            <nav class="sidebar-nav">
+              <a href="../index.html" class="nav-link"
+                ><i class="fa-solid fa-cart-shopping"></i> Sale</a
+              >
+              <a href="../components/addprodluct.html" class="nav-link"
+                ><i class="fa-solid fa-bag-shopping"></i> Product Manegement</a
+              >
+              <a href="../components/about.html" class="nav-link active"
+                ><i class="fa-solid fa-circle-info"></i> About Us</a
+              >
+            </nav>
+
+            <div class="sidebar-footer d-flex align-items-center gap-2">
+              <div class="avatar-circle"><i class="fa-solid fa-user"></i></div>
+              <div>
+                <div class="footer-name">Admin Account</div>
+                <div class="footer-email">freshmart@admin.com</div>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+  
+        <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+        <main class="col-lg-10 col-md-9 col-12">
+
+          <div class="header-rightbar d-flex align-items-center gap-3">
+            <button class="btn-icon d-lg-none" id="sidebarToggle" aria-label="Toggle menu">
+              <i class="fa-solid fa-bars"></i>
+            </button>
+            <h3 class="header-title mb-0">About Us</h3>
+          </div>
+
+          <!-- ===================== Creator Intro ===================== -->
+          <section class="about-hero">
+            <div class="about-avatar">
+              <img src="../image/photo_2026-05-31_13-27-27.jpg" alt="Creator photo"/>
+            </div>
+            <h2 class="creator-name">LimKethyaRavy</h2>
+            <p class="creator-title"> MIS Student year 2 at Setec Institue <br> Creator of FreshMart POS</p>
+
+          </section>
+          <!-- ===================== About the Project ===================== -->
+          <section class="about-section">
+            <h4 class="section-title"><i class="fa-solid fa-cart-shopping"></i> About the Project</h4>
+            <p class="section-text">
+              FreshMart POS handles product browsing and filtering, cart management with live
+              quantity control, dual-currency totals (USD / KHR), cash received and change
+              calculation, and a full product management panel for adding, editing, and tracking
+              inventory.
+            </p>
+          </section>
+
+          <!-- ===================== Skills / Tech Stack ===================== -->
+          <section class="about-section">
+            <h4 class="section-title"><i class="fa-solid fa-code"></i> Built With</h4>
+            <div class="tech-stack">
+              <span class="tech-badge"><i class="fa-brands fa-html5"></i> HTML5</span>
+              <span class="tech-badge"><i class="fa-brands fa-css3-alt"></i> CSS3</span>
+              <span class="tech-badge"><i class="fa-brands fa-bootstrap"></i> Bootstrap 5</span>
+              <span class="tech-badge"><i class="fa-brands fa-js"></i> JavaScript</span>
+              <span class="tech-badge"><i class="fa-brands fa-square-js"></i> jQuery</span>
+              <span class="tech-badge"><i class="fa-solid fa-icons"></i> Font Awesome</span>
+              
+
+            </div>
+          </section>
+
+          <!-- ===================== Contact / Connect ===================== -->
+          <section class="about-section contact-section">
+            <h4 class="section-title"><i class="fa-solid fa-address-card"></i> Let's Connect</h4>
+            <div class="contact-links">
+              <a href="mailto:youremail@example.com" class="contact-link">
+                <i class="fa-solid fa-envelope"></i> limkethyaravycybermail@gmail.com
+              </a>
+              <a href="https://github.com/LimKethyaRavy#" class="contact-link">
+                <i class="fa-brands fa-github"></i> LimkethyaRavy
+              </a>
+              <a href="https://www.linkedin.com/in/lim-kethyaravy-ba527a3b5/" class="contact-link">
+                <i class="fa-brands fa-linkedin"></i> LimkethyaRavy
+              </a>
+
+               <a href="https://www.facebook.com/EchoVincentt/" class="contact-link">
+                <i class="fa-brands fa-facebook"></i> KethyaRavy
+              </a>
+
+               <a href="https://www.tiktok.com/@vincent__cyber_?is_from_webapp=1&sender_device=pc" class="contact-link">
+                <i class="fa-brands fa-tiktok"></i> < /  Vincent >
+              </a>
+                
+             
+
+
+
+              <a href="#" class="contact-link">
+                <i class="fa-solid fa-phone"></i> +855 12 345 678
+              </a>
+            </div>
+          </section>
+
+        </main>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarBackdrop = document.getElementById('sidebarBackdrop');
+
+    function openSidebar() {
+      sidebar.classList.add('show');
+      sidebarBackdrop.classList.add('show');
+    }
+    function closeSidebar() {
+      sidebar.classList.remove('show');
+      sidebarBackdrop.classList.remove('show');
+    }
+
+    sidebarToggle.addEventListener('click', () => {
+      sidebar.classList.contains('show') ? closeSidebar() : openSidebar();
+    });
+
+    sidebarBackdrop.addEventListener('click', closeSidebar);
+
+    document.querySelectorAll('.sidebar-nav .nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth < 992) closeSidebar();
+      });
+    });
+  </script>
 </html>

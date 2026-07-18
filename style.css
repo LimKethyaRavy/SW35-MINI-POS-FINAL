@@ -628,7 +628,7 @@ body {
   }
 }
 
-/* ---- Tablet / iPad (<=991px) ---- */
+
 @media (max-width: 991px) {
   .topbar {
     left: 0;

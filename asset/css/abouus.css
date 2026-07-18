@@ -1,0 +1,353 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+:root {
+  --sidebar-bg: #004d40;
+  --sidebar-active: #00bfa5;
+  --brand-blue: #004d40;
+  --text: #f5f7f7;
+}
+
+body {
+  background-color: #f3f4f6;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* ===== Sidebar (same as product management page) ===== */
+.sidebar {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--sidebar-bg);
+  color: #cbd5e1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.25rem 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-brand .logo-box {
+  width: 42px;
+  height: 42px;
+  background: var(--brand-blue);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.sidebar-brand .brand-title {
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.sidebar-brand .brand-subtitle {
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 1rem 0.75rem;
+}
+
+.sidebar-nav .nav-link {
+  color: #cbd5e1;
+  border-radius: 8px;
+  padding: 0.65rem 0.9rem;
+  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.925rem;
+  transition: background-color 0.15s ease;
+}
+
+.sidebar-nav .nav-link i {
+  font-size: 1.1rem;
+  width: 20px;
+  text-align: center;
+}
+
+.sidebar-nav .nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+  color: #fff;
+}
+
+.sidebar-nav .nav-link.active {
+  background-color: var(--sidebar-active);
+  color: #fff;
+}
+
+.sidebar-footer {
+  padding: 1rem 0.9rem 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-footer .avatar-circle {
+  width: 38px;
+  height: 38px;
+  background: var(--brand-blue);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.sidebar-footer .footer-name {
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.sidebar-footer .footer-email {
+  color: #94a3b8;
+  font-size: 0.75rem;
+}
+
+.logo-box img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+}
+
+/* ===== Sidebar Toggle (tablet/mobile) ===== */
+#sidebarToggle {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--sidebar-bg);
+  flex-shrink: 0;
+}
+
+.sidebar-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1500;
+}
+
+.sidebar-backdrop.show {
+  display: block;
+}
+
+@media (min-width: 992px) {
+  #sidebarToggle,
+  .sidebar-backdrop {
+    display: none !important;
+  }
+}
+
+@media (max-width: 991px) {
+  .col-lg-2.col-md-3 {
+    width: 0;
+    padding: 0;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 260px;
+    height: 100vh;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 2000;
+  }
+
+  .sidebar.show {
+    transform: translateX(0);
+  }
+
+  main.col-lg-10.col-md-9.col-12 {
+    width: 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+/* ===================== Header ===================== */
+
+.header-rightbar {
+  width: 100%;
+  background-color: #fff;
+  padding: 20px 24px;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+}
+
+.header-title {
+  color: var(--sidebar-active);
+}
+
+/* ===================== Hero / Creator Intro ===================== */
+
+.about-hero {
+  text-align: center;
+  padding: 48px 20px 32px;
+  background: linear-gradient(180deg, rgba(0, 191, 165, 0.08), transparent);
+}
+
+.about-avatar {
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid var(--sidebar-active);
+  box-shadow: 0 6px 18px rgba(0, 191, 165, 0.25);
+}
+
+.about-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.creator-name {
+  color: var(--sidebar-bg);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.creator-title {
+  color: var(--sidebar-active);
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.creator-tagline {
+  max-width: 560px;
+  margin: 0 auto;
+  color: #6b7280;
+  font-style: italic;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* ===================== Content Sections ===================== */
+
+.about-section {
+  max-width: 780px;
+  margin: 0 auto 28px;
+  padding: 0 20px;
+}
+
+.section-title {
+  color: var(--sidebar-bg);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.section-title i {
+  color: var(--sidebar-active);
+}
+
+.section-text {
+  color: #4b5563;
+  line-height: 1.75;
+  font-size: 0.97rem;
+}
+
+/* ===================== Tech Stack ===================== */
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tech-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 9999px;
+  padding: 8px 16px;
+  font-size: 0.88rem;
+  color: var(--sidebar-bg);
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+}
+
+.tech-badge i {
+  color: var(--sidebar-active);
+}
+
+/* ===================== Contact ===================== */
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #eafaf1;
+  border: 1px solid var(--sidebar-active);
+  border-radius: 12px;
+  padding: 10px 16px;
+  color: var(--sidebar-bg);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.contact-link:hover {
+  background-color: var(--sidebar-active);
+  color: #fff;
+}
+
+.contact-link i {
+  color: var(--sidebar-active);
+  transition: color 0.2s ease;
+}
+
+.contact-link:hover i {
+  color: #fff;
+}
+
+/* ===================== Footer ===================== */
+
+.about-footer {
+  text-align: center;
+  padding: 24px 20px 40px;
+  color: #9ca3af;
+  font-size: 0.82rem;
+}

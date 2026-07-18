@@ -310,7 +310,8 @@ thead th {
   color: #fff;
   font-weight: 600;
   padding: 14px 16px;
-  text-align: left;
+  text-align: center;
+  vertical-align: middle;
   border: none;
 }
 
@@ -321,6 +322,7 @@ thead th:first-child {
 thead th:last-child {
   border-top-right-radius: 12px;
 }
+
 
 tbody tr {
   border-bottom: 1px solid #eef2f1;

@@ -24,7 +24,6 @@
       <div class="main">
         <div class="topbar">
           <div class="d-flex align-items-center gap-3">
-            <!-- Sidebar toggle: only visible on tablet/mobile (<992px) -->
             <button class="btn-icon d-lg-none" id="sidebarToggle" aria-label="Toggle menu">
               <i class="fa-solid fa-bars"></i>
             </button>
@@ -61,7 +60,7 @@
 
         <div class="content-shell">
              <!--======================= Sidebar=============================== -->
-             <!-- removed the redundant outer .sidebar div, this <aside> is the only sidebar element now -->
+         
               <aside class="sidebar" id="sidebar">
                 <div class="sidebar-brand d-flex justify-content-center">
                   <div class="logo-box bg-light">
@@ -83,7 +82,7 @@
                     Manegement</a
                   >
 
-                 <a href="./components/addprodluct.html" class="nav-link"
+                 <a href="./components/Aboutus.html" class="nav-link"
                  ><i class="fa-solid fa-user"></i> About US</a
                   >
              
@@ -100,7 +99,7 @@
                 </div>
               </aside>
 
-          <!-- Backdrop overlay shown behind sidebar on tablet/mobile when menu is open -->
+        
           <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
           <div class="row g-0">
@@ -264,7 +263,6 @@
 
     sidebarBackdrop.addEventListener('click', closeSidebar);
 
-    // close sidebar automatically after tapping a nav link on tablet
     document.querySelectorAll('.sidebar-nav .nav-link').forEach(link => {
       link.addEventListener('click', () => {
         if (window.innerWidth < 992) closeSidebar();

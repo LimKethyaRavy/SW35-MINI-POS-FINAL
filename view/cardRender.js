@@ -175,7 +175,12 @@ $(document).on("click", ".payment_btn", function(){
 
   const total = calculateTotal(cart_selected);
 
-  Payment(total);
+  Payment(total, cart_selected, function(){
+
+    cart_selected.length = 0;
+    renderCartOrder();
+
+  });
 
 })
 
