@@ -126,6 +126,15 @@ $(document).on("click", "#delete_btn", function(delete_product) {
 
           delete_Handle(products);
 
+            Swal.fire({
+
+            title: "Delete",
+            text: "Product delete successfully",
+            icon: "success",
+            confirmButtonText: "OK",
+
+  });
+
           rendertable();
 
         }
@@ -215,7 +224,14 @@ $("#btn_update").click((e) => {
 
   edit_Product(globalindex, pro_edit_obj);
 
-  alert("Pruduct update successfully ✅");
+    Swal.fire({
+
+    title: "Saved!",
+    text: "Product edit successfully",
+    icon: "success",
+    confirmButtonText: "OK",
+
+  });
 
 
   rendertable();
